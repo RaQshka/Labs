@@ -37,6 +37,7 @@ namespace Lab5
                 {
                     image_path = openFileDialog.FileName;
                     RefreshPictureBox();
+                    InitializeListBox();
                 }
             }
         }
@@ -156,27 +157,34 @@ namespace Lab5
         {
             var value = (sender as ScrollBar).Value;
             pictureBox1.Width = value;
+            RefreshListbox(1, "Width="+value);
             if (checkBox1.Checked)
             {
                 pictureBox1.Height = Convert.ToInt32(WidthSB.Value / aspect);
                 HeightSB.Value = pictureBox1.Height;
                 textBox2.Text = pictureBox1.Height.ToString();
+                RefreshListbox(2, "Height=" + pictureBox1.Height);
 
             }
             textBox1.Text = value.ToString();
 
         }
-        
+        private void RefreshListbox(int stringId, string value)
+        {
+            listBox1.Items[stringId] = value;
+        }      
         private void HeightSB_Scroll(object sender, ScrollEventArgs e)
         {
             var value = (sender as ScrollBar).Value;
             pictureBox1.Height= value;
+            RefreshListbox(2, "Height=" + pictureBox1.Height);
 
             if (checkBox1.Checked)
             {
                 pictureBox1.Width = Convert.ToInt32(HeightSB.Value * aspect);
                 WidthSB.Value = pictureBox1.Width;
                 textBox1.Text = pictureBox1.Width.ToString();
+                RefreshListbox(1, "Width=" + pictureBox1.Width);
 
             }
             textBox2.Text = value.ToString();
@@ -187,6 +195,8 @@ namespace Lab5
             var value = (sender as ScrollBar).Value;
             pictureBox1.Left = value;
             textBox3.Text = value.ToString();
+            RefreshListbox(4, "Left=" + pictureBox1.Left);
+
         }
 
         private void TopSB_Scroll(object sender, ScrollEventArgs e)
@@ -194,6 +204,8 @@ namespace Lab5
             var value = (sender as ScrollBar).Value;
             pictureBox1.Top = value;
             textBox4.Text = value.ToString();
+            RefreshListbox(3, "Top=" + pictureBox1.Top);
+
         }
 
         private void создатьФайлПараметровToolStripMenuItem_Click(object sender, EventArgs e)
@@ -212,6 +224,11 @@ namespace Lab5
         }
         private void CreateFileWithParameters(Stream stream)
         {
+            if (pictureBox1.Image == null)
+            {
+                MessageBox.Show("Не выбрано изображение!");
+                return;
+            }
             StreamWriter sw = new StreamWriter(stream);
 
             sw.WriteLine($"Path={image_path}");
@@ -219,10 +236,21 @@ namespace Lab5
             sw.WriteLine($"Height={pictureBox1.Image.Height}");
             sw.WriteLine($"Top={pictureBox1.Top}");
             sw.WriteLine($"Left={pictureBox1.Left}");
-            sw.WriteLine($"SaveAspect={checkBox1.Checked}");
+            sw.WriteLine($"SaveAspect={aspect}");
             //
 
             sw.Close();
+        }
+
+        private void InitializeListBox()
+        {
+
+            listBox1.Items.Add($"Path={image_path}");
+            listBox1.Items.Add($"Width={pictureBox1.Image.Width}");
+            listBox1.Items.Add($"Height={pictureBox1.Image.Height}");
+            listBox1.Items.Add($"Top={pictureBox1.Top}");
+            listBox1.Items.Add($"Left={pictureBox1.Left}");
+            listBox1.Items.Add($"SaveAspect={aspect}");
         }
     }
 }
