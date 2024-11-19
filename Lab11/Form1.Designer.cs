@@ -1,4 +1,4 @@
-﻿namespace Lab10
+﻿namespace Lab11
 {
     partial class Form1
     {
@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ArrayNumberUD = new System.Windows.Forms.NumericUpDown();
@@ -49,9 +51,16 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.животныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.автостанцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.создатьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrayNumberUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -64,21 +73,48 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox3);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox2);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox1);
-            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(514, 291);
+            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(748, 613);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(514, 318);
+            this.toolStripContainer1.Size = new System.Drawing.Size(748, 640);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.listBox3);
+            this.groupBox3.Location = new System.Drawing.Point(16, 280);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(229, 254);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "LINQ to SQL";
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.HorizontalExtent = 300;
+            this.listBox3.HorizontalScrollbar = true;
+            this.listBox3.ItemHeight = 16;
+            this.listBox3.Location = new System.Drawing.Point(8, 49);
+            this.listBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(211, 196);
+            this.listBox3.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -90,9 +126,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.listBox2);
             this.groupBox2.Location = new System.Drawing.Point(253, 18);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(246, 254);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -112,7 +148,7 @@
             // ArrayNumberUD
             // 
             this.ArrayNumberUD.Location = new System.Drawing.Point(169, 98);
-            this.ArrayNumberUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ArrayNumberUD.Margin = new System.Windows.Forms.Padding(4);
             this.ArrayNumberUD.Maximum = new decimal(new int[] {
             2,
             0,
@@ -144,7 +180,7 @@
             "Адресу",
             "Автобусам"});
             this.comboBox1.Location = new System.Drawing.Point(103, 33);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(134, 24);
             this.comboBox1.TabIndex = 3;
@@ -153,7 +189,7 @@
             // searchTB
             // 
             this.searchTB.Location = new System.Drawing.Point(103, 66);
-            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTB.Margin = new System.Windows.Forms.Padding(4);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(134, 22);
             this.searchTB.TabIndex = 2;
@@ -176,7 +212,7 @@
             this.listBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.listBox2.ItemHeight = 16;
             this.listBox2.Location = new System.Drawing.Point(12, 127);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(4);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(226, 116);
             this.listBox2.TabIndex = 0;
@@ -187,9 +223,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Location = new System.Drawing.Point(16, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(229, 254);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -198,7 +234,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(159, 37);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1,
             0,
@@ -224,7 +260,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(8, 81);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(211, 164);
             this.listBox1.TabIndex = 0;
@@ -235,10 +271,11 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(4, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(261, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(365, 27);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripDropDownButton1
@@ -247,7 +284,6 @@
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.четныеЧислаToolStripMenuItem,
             this.кратныеЧислаToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(113, 24);
@@ -273,7 +309,6 @@
             this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.животныеToolStripMenuItem,
             this.автостанцияToolStripMenuItem});
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(135, 24);
@@ -289,17 +324,71 @@
             // автостанцияToolStripMenuItem
             // 
             this.автостанцияToolStripMenuItem.Name = "автостанцияToolStripMenuItem";
-            this.автостанцияToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.автостанцияToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.автостанцияToolStripMenuItem.Text = "Автостанция";
             this.автостанцияToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(69, 19);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(150, 22);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 22);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Поиск: ";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.создатьБазуДанныхToolStripMenuItem,
+            this.добавитьДанныеToolStripMenuItem,
+            this.удалитьБазуДанныхToolStripMenuItem});
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(104, 24);
+            this.toolStripButton2.Text = "LINQ to SQL";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // создатьБазуДанныхToolStripMenuItem
+            // 
+            this.создатьБазуДанныхToolStripMenuItem.Name = "создатьБазуДанныхToolStripMenuItem";
+            this.создатьБазуДанныхToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
+            this.создатьБазуДанныхToolStripMenuItem.Text = "Создать базу данных";
+            this.создатьБазуДанныхToolStripMenuItem.Click += new System.EventHandler(this.создатьБазуДанныхToolStripMenuItem_Click);
+            // 
+            // добавитьДанныеToolStripMenuItem
+            // 
+            this.добавитьДанныеToolStripMenuItem.Name = "добавитьДанныеToolStripMenuItem";
+            this.добавитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
+            this.добавитьДанныеToolStripMenuItem.Text = "Добавить данные";
+            this.добавитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.добавитьДанныеToolStripMenuItem_Click);
+            // 
+            // удалитьБазуДанныхToolStripMenuItem
+            // 
+            this.удалитьБазуДанныхToolStripMenuItem.Name = "удалитьБазуДанныхToolStripMenuItem";
+            this.удалитьБазуДанныхToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
+            this.удалитьБазуДанныхToolStripMenuItem.Text = "Удалить базу данных";
+            this.удалитьБазуДанныхToolStripMenuItem.Click += new System.EventHandler(this.удалитьБазуДанныхToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 318);
+            this.ClientSize = new System.Drawing.Size(748, 640);
             this.Controls.Add(this.toolStripContainer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Введение в LINQ";
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -307,6 +396,8 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrayNumberUD)).EndInit();
@@ -341,6 +432,14 @@
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.NumericUpDown ArrayNumberUD;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripButton2;
+        private System.Windows.Forms.ToolStripMenuItem создатьБазуДанныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьДанныеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьБазуДанныхToolStripMenuItem;
     }
 }
 

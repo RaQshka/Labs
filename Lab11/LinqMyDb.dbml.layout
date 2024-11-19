@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LinqMyDb">
+  <DataContextMoniker Name="/LinqMyDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fac3dd6f-c001-4fb2-a032-16d07331a10d" absoluteBounds="0.75, 1, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/LinqMyDbDataContext/regions_list" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90d0a94d-e1ba-4361-a49f-80ae50b82427" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="65ba39d9-d10e-437c-a66c-b5d8e33d6b01" absoluteBounds="3, 3.25, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/LinqMyDbDataContext/city_list" />
+      <nestedChildShapes>
+        <elementListCompartment Id="abbcdcf1-4711-425b-b72d-a009cd5ac018" absoluteBounds="3.015, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 2.19399251302083); (1.75 : 3.94314697265625); (3 : 3.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinqMyDbDataContext/regions_list/regions_list_city_list" />
+      <nodes>
+        <classShapeMoniker Id="fac3dd6f-c001-4fb2-a032-16d07331a10d" />
+        <classShapeMoniker Id="65ba39d9-d10e-437c-a66c-b5d8e33d6b01" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

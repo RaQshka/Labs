@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ADO.NET" Class="LinqMyDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RAQSHKA\SQLEXPRESS;Initial Catalog=ADO.NET;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="Lab11.Properties.Settings" SettingsPropertyName="ADO_NETConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.regions_list" Member="regions_list">
+    <Type Name="regions_list">
+      <Column Name="region_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="region_name" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="regions_list_city_list" Member="city_list" ThisKey="region_ID" OtherKey="region_id" Type="city_list" />
+    </Type>
+  </Table>
+  <Table Name="dbo.city_list" Member="city_list">
+    <Type Name="city_list">
+      <Column Name="city_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="region_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="city_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="regions_list_city_list" Member="regions_list" ThisKey="region_id" OtherKey="region_ID" Type="regions_list" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

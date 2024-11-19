@@ -67,22 +67,23 @@ namespace Lab10
                 Moniker = "Акуленок",
                 About = new[] { "Злой", "Молчаливый", "Серый", "Кусается" }
             });
-            var query1 = arrayList.ToArray().Select(x => x as Animal);
+            var query1 = arrayList.OfType<Animal>();
             if (comboBox1.Text == "Имени")
             {
-                query1 = query1.Where(x => x.Type == searchTB.Text);
+                query1 = query1.Where(x => x.Type.ToLower() == searchTB.Text.ToLower());
             }
             else if (comboBox1.Text == "Кличке")
             {
-                query1 = query1.Where(x => x.Moniker == searchTB.Text);
+                query1 = query1.Where(x => x.Moniker.ToLower() == searchTB.Text.ToLower());
             }
             else if (comboBox1.Text == "Характеристике")
             {
-                query1 = query1.Where(x => x.About[(int)ArrayNumberUD.Value] == searchTB.Text);
+                query1 = query1.Where(x => x.About[(int)ArrayNumberUD.Value].ToLower() == searchTB.Text.ToLower());
             }
             else
             {
                 MessageBox.Show("Неверный параметр.");
+                return;
             }
             query1.ToList().ForEach(x =>
                 listBox2.Items.Add($"Это {x.Type}, а зовут его - {x.Moniker}"));
@@ -126,10 +127,26 @@ namespace Lab10
                 } 
             };
             
-            var result1 = busStations.OfType<BusStation>()
-                .Where(b => b.Buses.Contains(5)).ToList();
-
-            //listBox2.Items.Add();
+            var query1 = busStations.OfType<BusStation>();
+            if (comboBox1.Text == "Названию")
+            {
+                query1 = query1.Where(x => x.Name.ToLower() == searchTB.Text.ToLower());
+            }
+            else if (comboBox1.Text == "Адресу")
+            {
+                query1 = query1.Where(x => x.Address.ToLower() == searchTB.Text.ToLower());
+            }
+            else if (comboBox1.Text == "Автобусам")
+            {
+                query1 = query1.Where(x => x.Buses[(int)ArrayNumberUD.Value] == int.Parse(searchTB.Text));
+            }
+            else
+            {
+                MessageBox.Show("Неверный параметр.");
+                return;
+            }
+            query1.ToList().ForEach(x =>
+                listBox2.Items.Add($"Название: {x.Name}, адрес - {x.Address}"));
 
         }
     }
