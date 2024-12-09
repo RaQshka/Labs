@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<city_list>
+  <city>
+    <city_id>1</city_id>
+    <region_id>12</region_id>
+    <city_name>м. Луганськ</city_name>
+  </city>
+  <city>
+    <city_id>2</city_id>
+    <region_id>12</region_id>
+    <city_name>м. Свердловськ</city_name>
+  </city>
+  <city>
+    <city_id>3</city_id>
+    <region_id>12</region_id>
+    <city_name>смт. Станично-Луганське</city_name>
+  </city>
+  <city>
+    <city_id>4</city_id>
+    <region_id>10</region_id>
+    <city_name>м. Київ</city_name>
+  </city>
+  <city>
+    <city_id>5</city_id>
+    <region_id>10</region_id>
+    <city_name>м. Бровари</city_name>
+  </city>
+  <city>
+    <city_id>6</city_id>
+    <region_id>5</region_id>
+    <city_name>м. Донецьк</city_name>
+  </city>
+  <city>
+    <city_id>7</city_id>
+    <region_id>10</region_id>
+    <city_name>м. Вишгород</city_name>
+  </city>
+  <city>
+    <city_id>8</city_id>
+    <region_id>6</region_id>
+    <city_name>м. Житомир</city_name>
+  </city>
+  <city>
+    <city_id>9</city_id>
+    <region_id>12</region_id>
+    <city_name>Меловський район, смт Мелове</city_name>
+  </city>
+  <city>
+    <city_id>10</city_id>
+    <region_id>4</region_id>
+    <city_name>м. Дніпропетровськ</city_name>
+  </city>
+  <city>
+    <city_id>11</city_id>
+    <region_id>12</region_id>
+    <city_name>м. Ровеньки</city_name>
+  </city>
+  <city>
+    <city_id>12</city_id>
+    <region_id>23</region_id>
+    <city_name>м. Черкаси</city_name>
+  </city>
+  <city>
+    <city_id>13</city_id>
+    <region_id>12</region_id>
+    <city_name>м. Алчевськ</city_name>
+  </city>
+  <city>
+    <city_id>14</city_id>
+    <region_id>12</region_id>
+    <city_name>Перевальський р-н, с. Лиман</city_name>
+  </city>
+  <city>
+    <city_id>15</city_id>
+    <region_id>5</region_id>
+    <city_name>Макеєвка. Центральний міський район</city_name>
+  </city>
+  <city>
+    <city_id>16</city_id>
+    <region_id>12</region_id>
+    <city_name>Станично-Луганський район, с.Колесніковка</city_name>
+  </city>
+  <city>
+    <city_id>17</city_id>
+    <region_id>12</region_id>
+    <city_name>Перевальський р-н, пос. Чорнухіно</city_name>
+  </city>
+</city_list>

@@ -2,14 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace Lab11
 {
@@ -159,7 +157,7 @@ namespace Lab11
             listBox3.Items.Clear();
             LinqMyDbDataContext context = new LinqMyDbDataContext();
             var query = context.regions_list;
-            foreach(var region in query )
+            foreach (var region in query)
             {
                 listBox3.Items.Add(region.region_name);
             }
@@ -169,7 +167,7 @@ namespace Lab11
         {
             listBox3.Items.Clear();
             LinqMyDbDataContext context = new LinqMyDbDataContext();
-            var query = context.regions_list.Where(x=>x.region_name.StartsWith((sender as TextBox).Text));
+            var query = context.regions_list.Where(x => x.region_name.StartsWith((sender as TextBox).Text));
             foreach (var region in query)
             {
                 listBox3.Items.Add(region.region_name);
@@ -230,10 +228,10 @@ namespace Lab11
                 db.SubmitChanges();
 
                 MessageBox.Show("Данные успешно добавлены!");
-                listBox3.Items.Clear();
+                listBox4.Items.Clear();
                 foreach (var item in db.BusStations)
                 {
-                    listBox3.Items.Add($"Название станции: {item.Name}, г.{item.Location}");
+                    listBox4.Items.Add($"Название станции: {item.Name}, г.{item.Location}");
                 }
             }
         }
@@ -253,5 +251,283 @@ namespace Lab11
                 }
             }
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            XDocument xdoc = XDocument.Load("../../region.xml");
+            var query = xdoc.Descendants("region_name").Select(x => x.Value);
+
+            listBox6.Items.Clear();
+            foreach (var item in query)
+            {
+                listBox6.Items.Add(item);
+            }
+
+            LinqMyDbDataContext ldb = new LinqMyDbDataContext();
+            XElement xElement = new XElement("city_list",
+                ldb.city_list.Select(x =>
+                new XElement("city",
+                    new XElement("city_id", x.city_id),
+                    new XElement("region_id", x.region_id),
+                    new XElement("city_name", x.city_name)
+                )
+                ));
+            xElement.Save("../../city_list.xml");
+
+            XDocument xdocc = XDocument.Load("../../city_list.xml");
+
+            query = xdocc.Descendants("region").Where(x =>
+                    x.Element("region_name").Value.Contains("Луга")
+                )
+                .Select(x => x.Element("region_id").Value);
+
+            //wtf??
+            string rgnid = "";
+
+            foreach (var s in query)
+            {
+                rgnid = s;
+            }
+
+            xElement = new XElement("city",
+                new XElement("city_id", "18"),
+                new XElement("region_id", rgnid),
+                new XElement("city_name", "м. Щастя")
+                );
+            xdocc.Root.Add(xElement);
+
+            string xest = "<city><city_id>18</city_id><city_name>м. Щастя</city_name></city>";
+
+            XmlDocument document = new XmlDocument();
+            document.Load("../../region.xml");
+            XPathNavigator nav = document.CreateNavigator();
+            nav.MoveToChild("regions", String.Empty);
+            nav.MoveToChild("region", String.Empty);
+            nav.MoveToChild("region_id", String.Empty);
+            recursiveSearching(xest, nav);
+            document.Save("../../region_happy.xml");
+
+            var queryFull = xdocc.Descendants("city")
+                .Where(x => x.Element("region_id").Value.Equals(rgnid))
+                .Select(x => new
+                {
+                    city_id = x.Element("city_id").Value,
+                    city_name = x.Element("city_name").Value
+                });
+
+            foreach (var s in queryFull)
+            {
+                listBox5.Items.Add(s.city_name);
+            }
+
+
+        }
+
+        private void recursiveSearching(string xest, XPathNavigator nav)
+        {
+            if (nav.Value == "12")
+            {
+                nav.MoveToNext("region_name", String.Empty);
+                nav.InsertAfter(xest);
+            }
+            else
+            {
+                nav.MoveToParent();
+                nav.MoveToNext();
+                nav.MoveToChild("region_id", String.Empty);
+                recursiveSearching(xest, nav);
+            }
+        }
+
+        private void mergeCityregionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            XDocument regionsDoc = XDocument.Load("../../region.xml");
+            XDocument citiesDoc = XDocument.Load("../../city_list.xml");
+
+
+            XElement merged = new XElement("regions",
+                regionsDoc.Descendants("region").Select(region =>
+                {
+                    string regionId = region.Element("region_ID").Value;
+                    string regionName = region.Element("region_name").Value;
+
+
+                    var cities = citiesDoc.Descendants("city")
+                        .Where(city => city.Element("region_id").Value == regionId)
+                        .Select(city => new XElement("city",
+                            new XElement("city_id", city.Element("city_id").Value),
+                            new XElement("city_name", city.Element("city_name").Value)
+                        ));
+
+                    return new XElement("region",
+                        new XElement("region_ID", regionId),
+                        new XElement("region_name", regionName),
+                        new XElement("cities", cities)
+                    );
+                })
+            );
+
+            merged.Save("../../merged_city_region.xml");
+
+            MessageBox.Show("XML сохранён как merged_city_region.xml");
+        }
+
+        private void listBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                if (listBox6.SelectedItem != null)
+                {
+                    string selectedRegion = listBox6.SelectedItem.ToString();
+
+                    XDocument regionsDoc = XDocument.Load("../../region.xml");
+                    string regionId = regionsDoc.Descendants("region")
+                        .Where(region => region.Element("region_name").Value == selectedRegion)
+                        .Select(region => region.Element("region_id").Value)
+                        .FirstOrDefault();
+
+                    if (regionId != null)
+                    {
+                        XDocument citiesDoc = XDocument.Load("../../city_list.xml");
+                        var cities = citiesDoc.Descendants("city")
+                            .Where(city => city.Element("region_id").Value == regionId)
+                            .Select(city => city.Element("city_name").Value);
+
+                        listBox5.Items.Clear();
+                        foreach (var city in cities)
+                        {
+                            listBox5.Items.Add(city);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void AddCityButton_Click(object sender, EventArgs e)
+        {
+            if (listBox6.SelectedItem != null)
+            {
+                string selectedRegion = listBox6.SelectedItem.ToString();
+
+                XDocument regionsDoc = XDocument.Load("../../region.xml");
+                string regionId = regionsDoc.Descendants("region")
+                    .Where(region => region.Element("region_name").Value == selectedRegion)
+                    .Select(region => region.Element("region_id").Value)
+                    .FirstOrDefault();
+
+                if (regionId != null)
+                {
+                    string newCityName = Microsoft.VisualBasic.Interaction.InputBox(
+                        "Введите название нового города:", "Добавление города", "");
+
+                    if (!string.IsNullOrEmpty(newCityName))
+                    {
+                        XDocument citiesDoc = XDocument.Load("../../city_list.xml");
+
+                        int newCityId = citiesDoc.Descendants("city")
+                            .Select(city => int.Parse(city.Element("city_id").Value))
+                            .DefaultIfEmpty(0)
+                            .Max() + 1;
+
+                        XElement newCity = new XElement("city",
+                            new XElement("city_id", newCityId),
+                            new XElement("region_id", regionId),
+                            new XElement("city_name", newCityName)
+                        );
+
+                        citiesDoc.Root.Add(newCity);
+
+                        citiesDoc.Save("../../city_list.xml");
+
+                        listBox5.Items.Add(newCityName);
+                        MessageBox.Show("Город добавлен.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите область.");
+            }
+        }
+
+        private void EditCityButton_Click(object sender, EventArgs e)
+        {
+            if (listBox5.SelectedItem != null)
+            {
+                string oldCityName = listBox5.SelectedItem.ToString();
+
+                string newCityName = Microsoft.VisualBasic.Interaction.InputBox(
+                    "Введите новое название города:", "Редактирование города", oldCityName);
+
+                if (!string.IsNullOrEmpty(newCityName))
+                {
+                    XDocument citiesDoc = XDocument.Load("../../city_list.xml");
+
+                    var city = citiesDoc.Descendants("city")
+                        .FirstOrDefault(c => c.Element("city_name").Value == oldCityName);
+
+                    if (city != null)
+                    {
+                        city.Element("city_name").Value = newCityName;
+
+                        citiesDoc.Save("../../city_list.xml");
+
+                        int index = listBox5.SelectedIndex;
+                        listBox5.Items[index] = newCityName;
+
+                        MessageBox.Show("Город отредактирован.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите город.");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox5.SelectedItem != null)
+            {
+                string cityName = listBox5.SelectedItem.ToString();
+
+                XDocument citiesDoc = XDocument.Load("../../city_list.xml");
+
+                var city = citiesDoc.Descendants("city")
+                    .FirstOrDefault(c => c.Element("city_name").Value == cityName);
+
+                if (city != null)
+                {
+                    city.Remove();
+
+                    citiesDoc.Save("../../city_list.xml");
+
+                    listBox5.Items.Remove(cityName);
+                    MessageBox.Show("Город удалён.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите город.");
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+            {
+                AddCityButton.Visible = true;
+                EditCityButton.Visible = true;
+                RemoveCityButton.Visible = true;
+            }
+            else
+            {
+                AddCityButton.Visible = false;
+                EditCityButton.Visible = false;
+                RemoveCityButton.Visible = false;
+            }
+        }
+
     }
 }

@@ -30,7 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.listBox6 = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,15 +59,21 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.животныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.автостанцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.создатьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.образецToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mergeCityregionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddCityButton = new System.Windows.Forms.Button();
+            this.EditCityButton = new System.Windows.Forms.Button();
+            this.RemoveCityButton = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrayNumberUD)).BeginInit();
@@ -73,16 +87,17 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox4);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox3);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox2);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox1);
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(748, 613);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(839, 575);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(748, 640);
+            this.toolStripContainer1.Size = new System.Drawing.Size(839, 602);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -90,8 +105,73 @@
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.RemoveCityButton);
+            this.groupBox4.Controls.Add(this.EditCityButton);
+            this.groupBox4.Controls.Add(this.AddCityButton);
+            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.listBox5);
+            this.groupBox4.Controls.Add(this.listBox6);
+            this.groupBox4.Location = new System.Drawing.Point(507, 18);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(309, 544);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "LINQ to XML";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 217);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 16);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Населенные пункты: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 23);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 16);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Области: ";
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.HorizontalExtent = 300;
+            this.listBox5.HorizontalScrollbar = true;
+            this.listBox5.ItemHeight = 16;
+            this.listBox5.Location = new System.Drawing.Point(8, 237);
+            this.listBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(293, 180);
+            this.listBox5.TabIndex = 8;
+            // 
+            // listBox6
+            // 
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.HorizontalExtent = 300;
+            this.listBox6.HorizontalScrollbar = true;
+            this.listBox6.ItemHeight = 16;
+            this.listBox6.Location = new System.Drawing.Point(8, 49);
+            this.listBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(293, 164);
+            this.listBox6.TabIndex = 0;
+            this.listBox6.SelectedIndexChanged += new System.EventHandler(this.listBox6_SelectedIndexChanged);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.listBox4);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.listBox3);
@@ -99,10 +179,41 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(229, 254);
+            this.groupBox3.Size = new System.Drawing.Size(483, 282);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "LINQ to SQL";
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.HorizontalExtent = 300;
+            this.listBox4.HorizontalScrollbar = true;
+            this.listBox4.ItemHeight = 16;
+            this.listBox4.Location = new System.Drawing.Point(249, 19);
+            this.listBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(225, 244);
+            this.listBox4.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 22);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Поиск: ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(69, 19);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(172, 22);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // listBox3
             // 
@@ -113,7 +224,7 @@
             this.listBox3.Location = new System.Drawing.Point(8, 49);
             this.listBox3.Margin = new System.Windows.Forms.Padding(4);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(211, 196);
+            this.listBox3.Size = new System.Drawing.Size(233, 212);
             this.listBox3.TabIndex = 0;
             // 
             // groupBox2
@@ -272,10 +383,11 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(4, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(365, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(511, 27);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripDropDownButton1
@@ -328,25 +440,6 @@
             this.автостанцияToolStripMenuItem.Text = "Автостанция";
             this.автостанцияToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(69, 19);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 22);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 22);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Поиск: ";
-            // 
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -382,11 +475,83 @@
             this.удалитьБазуДанныхToolStripMenuItem.Text = "Удалить базу данных";
             this.удалитьБазуДанныхToolStripMenuItem.Click += new System.EventHandler(this.удалитьБазуДанныхToolStripMenuItem_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(11, 424);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(290, 38);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Text = "Отображать населенные пункты по щелчку";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.образецToolStripMenuItem,
+            this.mergeCityregionsToolStripMenuItem});
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(107, 24);
+            this.toolStripButton3.Text = "LINQ to XML";
+            // 
+            // образецToolStripMenuItem
+            // 
+            this.образецToolStripMenuItem.Name = "образецToolStripMenuItem";
+            this.образецToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.образецToolStripMenuItem.Text = "Образец";
+            this.образецToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // mergeCityregionsToolStripMenuItem
+            // 
+            this.mergeCityregionsToolStripMenuItem.Name = "mergeCityregionsToolStripMenuItem";
+            this.mergeCityregionsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mergeCityregionsToolStripMenuItem.Text = "Merge city_regions";
+            this.mergeCityregionsToolStripMenuItem.Click += new System.EventHandler(this.mergeCityregionsToolStripMenuItem_Click);
+            // 
+            // AddCityButton
+            // 
+            this.AddCityButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddCityButton.Location = new System.Drawing.Point(11, 469);
+            this.AddCityButton.Name = "AddCityButton";
+            this.AddCityButton.Size = new System.Drawing.Size(91, 68);
+            this.AddCityButton.TabIndex = 11;
+            this.AddCityButton.Text = "Добавить город";
+            this.AddCityButton.UseVisualStyleBackColor = true;
+            this.AddCityButton.Visible = false;
+            this.AddCityButton.Click += new System.EventHandler(this.AddCityButton_Click);
+            // 
+            // EditCityButton
+            // 
+            this.EditCityButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EditCityButton.Location = new System.Drawing.Point(108, 469);
+            this.EditCityButton.Name = "EditCityButton";
+            this.EditCityButton.Size = new System.Drawing.Size(91, 68);
+            this.EditCityButton.TabIndex = 12;
+            this.EditCityButton.Text = "Изменить город";
+            this.EditCityButton.UseVisualStyleBackColor = true;
+            this.EditCityButton.Visible = false;
+            this.EditCityButton.Click += new System.EventHandler(this.EditCityButton_Click);
+            // 
+            // RemoveCityButton
+            // 
+            this.RemoveCityButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemoveCityButton.Location = new System.Drawing.Point(205, 468);
+            this.RemoveCityButton.Name = "RemoveCityButton";
+            this.RemoveCityButton.Size = new System.Drawing.Size(97, 68);
+            this.RemoveCityButton.TabIndex = 13;
+            this.RemoveCityButton.Text = "Удалить город";
+            this.RemoveCityButton.UseVisualStyleBackColor = true;
+            this.RemoveCityButton.Visible = false;
+            this.RemoveCityButton.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 640);
+            this.ClientSize = new System.Drawing.Size(839, 602);
             this.Controls.Add(this.toolStripContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
@@ -396,6 +561,8 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -440,6 +607,19 @@
         private System.Windows.Forms.ToolStripMenuItem создатьБазуДанныхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьДанныеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьБазуДанныхToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripButton3;
+        private System.Windows.Forms.ToolStripMenuItem образецToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mergeCityregionsToolStripMenuItem;
+        private System.Windows.Forms.Button RemoveCityButton;
+        private System.Windows.Forms.Button EditCityButton;
+        private System.Windows.Forms.Button AddCityButton;
     }
 }
 
